@@ -1,15 +1,12 @@
+# Copyright (C) 
+# 
+# Author: Autodesk Developer Network
+
 #For this exercise, search for the TODO keywords and follow the instructions in
 #comments. If you are unsure of what you need to do, feel free to ask the instructor
 #or look into the solution folder.
 #Each #... line is a line of code you need to write or complete.
 
-# 
-# File: 
-#
-# Dependency Graph Node: 
-#
-# Author: Maya Plug-in Wizard 2.0
-#
 import sys
 import maya.OpenMaya as OpenMaya
 import maya.OpenMayaMPx as OpenMayaMPx
@@ -56,7 +53,7 @@ class dagInfo(OpenMayaMPx.MPxCommand):
 				print "Number of instances on this node is : %d" % num
 				sys.stdout.write( '\n' )
 			
-			#Save out the MMatrix __str__ function so we can replace it once were done
+			# Save out the MMatrix __str__ function so we can replace it once were done
 			oldMMatrix_str = OpenMaya.MMatrix .__str__		
 			# Call my new printing function to print the matrix so that is it readable
 			OpenMaya.MMatrix.__str__ = myMatrix_str		
@@ -66,13 +63,14 @@ class dagInfo(OpenMayaMPx.MPxCommand):
 			#...
 			for j in range (0, dagPathArray.length()):
 				instanceDagPath = dagPathArray[j]
-				//- TODO: Get this instance full dag path and print it
-				print "Dag Path %d" % j
-				print " for this node: %s" % #...
+				#- TODO: Get this instance full dag path and print it
+				#...
+				
 				sys.stdout.write( '\n' )
 			
 				#- TODO: Get the exclusive matrix of this node
 				exMatrix = #...
+				
 				print "The exclusive transformation matrix of this node is "
 				print exMatrix
 				sys.stdout.write( '\n' )
@@ -98,14 +96,11 @@ class dagInfo(OpenMayaMPx.MPxCommand):
 			# Replace MMatrix __str__ function to the default
 			OpenMaya.MMatrix.__str__ = oldMMatrix_str
 
-		#- Return success to Maya
-		return OpenMaya.MStatus.kSuccess
 
-#New __str__ function for Making the matrix readable....
+# New __str__ function for Making the matrix readable....
 def myMatrix_str(self):
 	return "[[%g,%g,%g,%g][%g,%g,%g,%g][%g,%g,%g,%g][%g,%g,%g,%g]]" % (self(0,0), self(0,1), self(0,2), self(0,3), self(1,0), self(1,1), self(1,2), self(1,3), self(2,0), self(2,1), self(2,2), self(2,3), self(3,0), self(3,1), self(3,2), self(3,3))
 
-		
 # Creator
 def cmdCreator():
 	return OpenMayaMPx.asMPxPtr( dagInfo() )

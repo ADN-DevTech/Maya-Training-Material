@@ -57,7 +57,7 @@
 				Name="VCLinkerTool"
 				AdditionalOptions="/subsystem:windows /dll /incremental:yes /debug /machine:I386 /export:initializePlugin /export:uninitializePlugin"
 				AdditionalDependencies="Foundation.lib OpenMaya.lib OpenMayaUI.lib opengl32.lib"
-				OutputFile="Debug\arrowLocator.mll"
+				OutputFile="C:\MayaAPITraining\plug-ins\arrowLocator.mll"
 				AdditionalLibraryDirectories="C:\Program Files\Autodesk\Maya2009\lib"
 				ProgramDatabaseFile="Debug/.pdb"
 				ImportLibrary="Debug/.lib"

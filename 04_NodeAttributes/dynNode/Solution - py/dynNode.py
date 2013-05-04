@@ -67,14 +67,11 @@ class dynNode(OpenMayaMPx.MPxNode):
 			#- Set the new output value to the handle.
 			print "combined Value", inputValue + dynValue 
 			outputHandle.setFloat( inputValue + dynValue )
-
-			#- Return success to Maya
-			return OpenMaya.MStatus.kSuccess
 			
 		#- Tell Maya that we do not know how to handle this plug, but let's give a chance
 		#- to our parent class to evaluate it.
 		else:
-			return OpenMaya.MStatus.kUnknownParameter
+			return OpenMaya.kUnknownParameter
 			
 	#- No MPxNode member function can be called from the MPxNode constructor. 
 	#- The postConstructor will get called immediately after the constructor 
@@ -169,9 +166,6 @@ def nodeInitializer():
 	#- the output to be marked dirty when the input changes. The output will
 	#- then be recomputed the next time the value of the output is requested.
 	dynNode.attributeAffects( dynNode.aInput, dynNode.aOutput )
-
-	#- Return success to Maya
-	return OpenMaya.MStatus.kSuccess
 
 # Initialize the script plug-in
 def initializePlugin(mobject):

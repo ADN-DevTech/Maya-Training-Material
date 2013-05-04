@@ -1,12 +1,11 @@
-#
 # Copyright (C) 
 # 
-# File: arrowLocator.py
-#
-# Dependency Graph Node: 
-#
-# Author: Maya Plug-in Wizard 2.0
+# Author: Autodesk Developer Network
 
+#For this exercise, search for the TODO keywords and follow the instructions in
+#comments. If you are unsure of what you need to do, feel free to ask the instructor
+#or look into the solution folder.
+#Each #... line is a line of code you need to write or complete.
 
 import sys, math
 
@@ -153,7 +152,6 @@ def nodeInitializer():
 	##...
 	uAttr.setDefault(OpenMaya.MAngle(0.0, OpenMaya.MAngle.kDegrees))
 	arrowLocator.addAttribute(arrowLocator.windDirection)
-	return OpenMaya.MStatus.kSuccess
 	
 # Initialize the script plug-in
 def initializePlugin(mobject):

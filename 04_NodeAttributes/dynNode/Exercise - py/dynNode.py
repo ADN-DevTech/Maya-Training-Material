@@ -1,12 +1,11 @@
-#
 # Copyright (C) 
 # 
-# File: dynNode.py
-#
-# Dependency Graph Node: 
-#
-# Author: Maya Plug-in Wizard 2.0
-#
+# Author: Autodesk Developer Network
+
+#For this exercise, search for the TODO keywords and follow the instructions in
+#comments. If you are unsure of what you need to do, feel free to ask the instructor
+#or look into the solution folder.
+#Each #... line is a line of code you need to write or complete.
 
 import maya.OpenMaya as OpenMaya
 import maya.OpenMayaMPx as OpenMayaMPx
@@ -99,14 +98,11 @@ class dynNode(OpenMayaMPx.MPxNode):
 			
 			#- Set the new output value to the handle.
 			outputHandle.setFloat( inputValue + dynValue )
-
-			#- Return success to Maya
-			return OpenMaya.MStatus.kSuccess
 			
 		#- Tell Maya that we do not know how to handle this plug, but let's give a chance
 		#- to our parent class to evaluate it.
 		else:
-			return OpenMaya.MStatus.kUnknownParameter
+			return OpenMaya.kUnknownParameter
 			
 	
 # Creator
@@ -151,9 +147,6 @@ def nodeInitializer():
 	#- the output to be marked dirty when the input changes. The output will
 	#- then be recomputed the next time the value of the output is requested.
 	dynNode.attributeAffects( dynNode.aInput, dynNode.aOutput )
-
-	#- Return success to Maya
-	return OpenMaya.MStatus.kSuccess
 
 # Initialize the script plug-in
 def initializePlugin(mobject):

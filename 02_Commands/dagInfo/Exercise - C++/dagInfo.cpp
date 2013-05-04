@@ -74,7 +74,7 @@ MStatus dagInfo::doIt(const MArgList& )
 			//
 			if ( //... )
 			{
-				//If this dag node is a transform node, also get its local transformation matrix
+				//- If this dag node is a transform node, also get its local transformation matrix
 				MFnTransform fnTrans(instanceDagPath);
 				MTransformationMatrix localMatrix = fnTrans.transformation();
 				cout<<"The local transformation matrix represented by this transform node is "<<localMatrix.asMatrix()<<endl;

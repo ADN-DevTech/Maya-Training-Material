@@ -148,7 +148,6 @@ def nodeInitializer():
 	uAttr.setMax(2*math.pi)
 	uAttr.setDefault(OpenMaya.MAngle(0.0, OpenMaya.MAngle.kDegrees))
 	arrowLocator.addAttribute(arrowLocator.windDirection)
-	return OpenMaya.MStatus.kSuccess
 	
 # Initialize the script plug-in
 def initializePlugin(mobject):

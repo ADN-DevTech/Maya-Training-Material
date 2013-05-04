@@ -121,7 +121,7 @@ MStatus transCircle::initialize()
 	attributeAffects( inputTranslate, outputTranslateX );
 	attributeAffects( inputTranslate, outputTranslateY );
 	attributeAffects( inputTranslate, outputTranslateZ );
-	attributeAffects( inputTranslate, outputTranslate);
+	attributeAffects( inputTranslate, outputTranslate );
 
 	//- Other relationships,
 	attributeAffects( input, outputTranslateX );

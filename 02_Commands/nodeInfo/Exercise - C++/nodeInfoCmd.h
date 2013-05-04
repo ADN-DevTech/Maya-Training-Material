@@ -25,9 +25,9 @@ public:
 	//- TODO: Declare the method called by Maya to execute your command.
 	//...
 
-	//- Create a new MSyntax object to register arguments
-	//- for this command. This newSyntax() method has to used 
-	//- during the command registration into our plug-in
+	//- Create a new MSyntax object to teach Maya about possible arguments
+	//- in our command. This newSyntax() method is used during the command
+	//- registration into our plug-in
 	static MSyntax newSyntax();
 
 	static void* creator() {

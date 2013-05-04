@@ -1,12 +1,11 @@
-#
 # Copyright (C) 
 # 
-# File: setUpTransCircle.py
-#
-# Dependency Graph Node: 
-#
-# Author: Maya Plug-in Wizard 2.0
+# Author: Autodesk Developer Network
 
+#For this exercise, search for the TODO keywords and follow the instructions in
+#comments. If you are unsure of what you need to do, feel free to ask the instructor
+#or look into the solution folder.
+#Each #... line is a line of code you need to write or complete.
 
 import sys, math
 
@@ -46,7 +45,7 @@ class transCircle(OpenMayaMPx.MPxNode):
 	#- 	data - object that provides access to the attributes for this node
 	def compute(self, plug, data):
 		if (plug != transCircle.aOutputTranslateX and plug != transCircle.aOutputTranslateY and plug != transCircle.aOutputTranslateZ and plug != transCircle.aOutputTranslate):
-			return OpenMaya.MStatus.kUnknownParameter
+			return OpenMaya.kUnknownParameter
 	
 		inputData = data.inputValue( transCircle.aInput )
 		scaleData = data.inputValue( transCircle.aScale )
@@ -85,11 +84,6 @@ class transCircle(OpenMayaMPx.MPxNode):
 		
 		#- Tell Maya the plug is now clean
 		data.setClean(plug)
-	
-		#- Return success to Maya
-		return OpenMaya.MStatus.kSuccess
-
-	
 
 def nodeInitializer():
 	
@@ -161,8 +155,6 @@ def nodeInitializer():
 	transCircle.attributeAffects( transCircle.aScale, transCircle.aOutputTranslateY )
 	transCircle.attributeAffects( transCircle.aFrames, transCircle.aOutputTranslateX )
 	transCircle.attributeAffects( transCircle.aFrames, transCircle.aOutputTranslateY )
-
-	return OpenMaya.MStatus.kSuccess
 	
 # Creator
 def nodeCreator():
@@ -277,7 +269,6 @@ class setUpTransCircle(OpenMayaMPx.MPxCommand):
 		#- Now force these operation to be executed by calling the DG modifier doIt() method.
 		self.__dgMod.doIt()
 
-		#return OpenMaya.MStatus.kSuccess
 	def isUndoable(self):
 		return True
 	

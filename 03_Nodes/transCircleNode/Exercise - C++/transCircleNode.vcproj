@@ -57,7 +57,7 @@
 				Name="VCLinkerTool"
 				AdditionalOptions="/subsystem:windows /dll /incremental:yes /debug /machine:I386 /export:initializePlugin /export:uninitializePlugin"
 				AdditionalDependencies="Foundation.lib OpenMaya.lib "
-				OutputFile="C:\My Documents\maya\2009\plug-ins\transCircleNode.mll"
+				OutputFile="..\..\..\plug-ins\transCircleNode.mll"
 				AdditionalLibraryDirectories="C:\Program Files\Autodesk\Maya2009\lib"
 				ProgramDatabaseFile="Debug/transCircleNode.pdb"
 				ImportLibrary="Debug/transCircleNode.lib"
@@ -205,10 +205,6 @@
 			>
 			<File
 				RelativePath=".\AEtransCircleTemplate.mel"
-				>
-			</File>
-			<File
-				RelativePath=".\transCircleNode.mel"
 				>
 			</File>
 		</Filter>

@@ -1,17 +1,11 @@
+# Copyright (C) 
+# 
+# Author: Autodesk Developer Network
+
 #For this exercise, search for the TODO keywords and follow the instructions in
 #comments. If you are unsure of what you need to do, feel free to ask the instructor
 #or look into the solution folder.
 #Each #... line is a line of code you need to write or complete.
-
-#
-# Copyright (C) 
-# 
-# File: simpleNode.cpp
-#
-# Dependency Graph Node: simpleNode
-#
-# Author: Maya Plug-in Wizard 2.0
-#
 
 import maya.OpenMaya as OpenMaya
 import maya.OpenMayaMPx as OpenMayaMPx
@@ -69,12 +63,9 @@ class simpleNode(OpenMayaMPx.MPxNode):
 			#- TODO: Tell Maya the plug is now clean
 			#...
 
-			#- Return success to Maya
-			return OpenMaya.MStatus.kSuccess
-
 		#- Tell Maya that we do not know how to handle this plug, but let give a chance
 		#- to our parent class to evaluate it.
-		return OpenMaya.MStatus.kUnknownParameter
+		return OpenMaya.kUnknownParameter
 
 # Creator
 def nodeCreator():
@@ -83,7 +74,6 @@ def nodeCreator():
 #- The initialize method is called to create and initialize all of the 
 #- attributes and attribute dependencies for this node type. This is 
 #- only called once when the node type is registered with Maya.
-#- Return Values: OpenMaya.MStatus.kSuccess / OpenMaya.MStatus.kFailure
 #-
 def nodeInitializer():
 	#- Initialize a float input attribute using the MFnNumericAttribute

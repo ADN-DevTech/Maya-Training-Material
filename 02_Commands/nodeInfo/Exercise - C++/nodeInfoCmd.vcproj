@@ -57,7 +57,7 @@
 				Name="VCLinkerTool"
 				AdditionalOptions="/subsystem:windows /dll /incremental:yes /debug /machine:I386 /export:initializePlugin /export:uninitializePlugin"
 				AdditionalDependencies="Foundation.lib OpenMaya.lib "
-				OutputFile="Debug\nodeInfoCmd.mll"
+				OutputFile="C:\MayaAPITraining\plug-ins\nodeInfoCmd.mll"
 				AdditionalLibraryDirectories="C:\Program Files\Autodesk\Maya2009\lib"
 				ProgramDatabaseFile="Debug/.pdb"
 				ImportLibrary="Debug/.lib"

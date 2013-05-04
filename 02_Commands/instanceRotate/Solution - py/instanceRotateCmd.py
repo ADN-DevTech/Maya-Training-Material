@@ -65,7 +65,7 @@ class instanceRotate(OpenMayaMPx.MPxCommand):
 		numFlags = argParser.numberOfFlagsUsed()
 		if(numFlags != 1):
 			OpenMaya.MGlobal.displayError("Simple Plugs requires one flag argument and a DAG object must be selected")
-			return OpenMaya.MStatus.kFailure
+			return None
 		else:
 			if(argParser.isFlagSet(ROTATEFLAG) | argParser.isFlagSet(ROTATELONGFLAG)):
 				#- The user enters 1, 2, or 3 to indicate x, y, or z rotation axis
@@ -79,7 +79,7 @@ class instanceRotate(OpenMayaMPx.MPxCommand):
 					self.axis = AXIS_Z
 				else:
 					OpenMaya.MGlobal.displayError("Invalid axis rotation argument")
-					return OpenMaya.MStatus.kFailure
+					return None
 
 		return self.redoIt(args)
 
@@ -97,7 +97,7 @@ class instanceRotate(OpenMayaMPx.MPxCommand):
 
 		if(selList.isEmpty()):
 			OpenMaya.MGlobal.displayError("A single DAG object must be selected")
-			return OpenMaya.MStatus.kFailure
+			return None
 
 		dagPath = OpenMaya.MDagPath()
 		selList.getDagPath(0,dagPath)
@@ -114,9 +114,9 @@ class instanceRotate(OpenMayaMPx.MPxCommand):
 			self.rotate(dagPath)
 		else:
 			OpenMaya.MGlobal.displayError("The selected item is not an instanced DAG object")
-			return OpenMaya.MStatus.kFailure
+			return None
 
-		return OpenMaya.MStatus.kSuccess
+		
 
 	#- This method should undo the work done be the redoIt method based on the 
 	#- internal class data only.
@@ -131,19 +131,18 @@ class instanceRotate(OpenMayaMPx.MPxCommand):
 			rotPlug = fnParent.findPlug("rotate")
 			if (self.axis == AXIS_X):
 				rotxPlug = rotPlug.child(0)
-				rotxPlug.setValue(self.rotations[i])
+				rotxPlug.setDouble(self.rotations[i])
 			elif (self.axis == AXIS_Z):
 				rotzPlug = rotPlug.child(2)
-				rotzPlug.setValue(self.rotations[i])
-				break
+				rotzPlug.setDouble(self.rotations[i])
 			else: # AXIS_Y:
 				rotyPlug = rotPlug.child(1)
-				rotyPlug.setValue(self.rotations[i])
+				rotyPlug.setDouble(self.rotations[i])
 
 		#- Empty the array in case the user chooses redoIt
 		self.rotations.clear()
 
-		return OpenMaya.MStatus.kSuccess
+		
 
 	#- Method used by redoIt to assign a 45 degree rotation along a random axis.
 	def rotate( self, dp ):

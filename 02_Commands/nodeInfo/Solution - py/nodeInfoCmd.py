@@ -29,8 +29,7 @@ class nodeInfoCmd(OpenMayaMPx.MPxCommand):
 		argData = OpenMaya.MArgDatabase( self.syntax(), args)
 		if argData.isFlagSet(kQuietFlag):
 			self.quiet = 1
-		if argData.isFlagSet(kQuietFlagLong):
-			self.quiet = 1
+
 	#- This method performs the action of the command. It iterates over all
 	#- selected items and prints out connected plug and dependency node type
 	#- information.
@@ -55,13 +54,14 @@ class nodeInfoCmd(OpenMayaMPx.MPxCommand):
 			#- Create a function set for the dependency node
 			fnDependNode.setObject( dependNode )
 
-			#- Check the type of the dependency node
-			nodeName = fnDependNode.name()
-			print "######################"
-			sys.stdout.write( '\n' )
-			print nodeName 
-			print " is of type %s" % dependNode.apiTypeStr()
-			sys.stdout.write( '\n' )
+			if  not self.quiet:
+				#- Check the type of the dependency node
+				nodeName = fnDependNode.name()
+				print "######################"
+				sys.stdout.write( '\n' )
+				print nodeName 
+				print " is of type %s" % dependNode.apiTypeStr()
+				sys.stdout.write( '\n' )
 
 			#- Get all connected plugs to this node
 			try:
@@ -95,7 +95,6 @@ class nodeInfoCmd(OpenMayaMPx.MPxCommand):
 					for j in range( 0, array.length() ): 
 						mnode = array[j].node()
 						if  not self.quiet:
-							
 							fnConnectedNode = OpenMaya.MFnDependencyNode(mnode)
 							print " This plug is a destination of node: %s" % fnConnectedNode.name()
 							sys.stdout.write( '\n' )
@@ -106,9 +105,6 @@ class nodeInfoCmd(OpenMayaMPx.MPxCommand):
 
 			iter.next()
 
-		#- Return success to Maya
-		return OpenMaya.MStatus.kSuccess
-		
 # Creator
 def cmdCreator():
 	return OpenMayaMPx.asMPxPtr( nodeInfoCmd() )

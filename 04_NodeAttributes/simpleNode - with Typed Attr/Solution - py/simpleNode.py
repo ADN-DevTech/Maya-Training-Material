@@ -63,12 +63,9 @@ class simpleNode(OpenMayaMPx.MPxNode):
 			#- Tell Maya the plug is now clean
 			dataBlock.setClean( plug )
 
-			#- Return success to Maya
-			return OpenMaya.MStatus.kSuccess
-
 		#- Tell Maya that we do not know how to handle this plug, but let give a chance
 		#- to our parent class to evaluate it.
-		return OpenMaya.MStatus.kUnknownParameter
+		return OpenMaya.kUnknownParameter
 
 # Creator
 def nodeCreator():
@@ -77,7 +74,6 @@ def nodeCreator():
 #- The initialize method is called to create and initialize all of the 
 #- attributes and attribute dependencies for this node type. This is 
 #- only called once when the node type is registered with Maya.
-#- Return Values: OpenMaya.MStatus.kSuccess / OpenMaya.MStatus.kFailure
 #-
 def nodeInitializer():
 	#- Initialize a float input attribute using the MFnNumericAttribute

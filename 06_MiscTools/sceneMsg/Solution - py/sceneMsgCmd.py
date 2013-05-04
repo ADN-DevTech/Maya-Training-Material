@@ -70,14 +70,10 @@ class sceneMsgCmd(OpenMayaMPx.MPxCommand):
 		saveCheckCallbackId = OpenMaya.MSceneMessage.addCheckCallback(OpenMaya.MSceneMessage.kBeforeSaveCheck,saveCheckCallback, self)
 		IDs.append(saveCheckCallbackId)
 		
-		return OpenMaya.MStatus.kSuccess
-		
 	def undoIt(self):
 		if IDs.length()!= 0: 
 			removeCallback(IDs)
-		return OpenMaya.MStatus.kSuccess
-		
-	
+			
 # Creator
 def nodeCreator():
 	return OpenMayaMPx.asMPxPtr( sceneMsgCmd() )

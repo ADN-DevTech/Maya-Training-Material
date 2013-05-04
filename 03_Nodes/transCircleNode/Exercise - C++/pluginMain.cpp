@@ -23,8 +23,8 @@ MStatus initializePlugin( MObject obj )
 	MStatus   status;
 	MFnPlugin plugin( obj, "", "2009", "Any");
 
-	// Add plug-in feature registration here
-	//
+	//- TODO: Add plug-in feature registration here
+	//...
 	
 	return status;
 }
@@ -42,8 +42,8 @@ MStatus uninitializePlugin( MObject obj )
 	MStatus   status;
 	MFnPlugin plugin( obj );
 
-	// Add plug-in feature deregistration here
-	//
+	//- TODO: Add plug-in feature deregistration here
+	//...
 
 	return status;
 }

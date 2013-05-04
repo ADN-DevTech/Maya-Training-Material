@@ -57,7 +57,7 @@
 				Name="VCLinkerTool"
 				AdditionalOptions="/subsystem:windows /dll /incremental:yes /debug /machine:I386 /export:initializePlugin /export:uninitializePlugin"
 				AdditionalDependencies="Foundation.lib OpenMaya.lib OpenMayaAnim.lib"
-				OutputFile="Debug\dagInfo.mll"
+				OutputFile="C:\MayaAPITraining\plug-ins\dagInfo.mll"
 				AdditionalLibraryDirectories="C:\Program Files\Autodesk\Maya2009\lib"
 				ProgramDatabaseFile="Debug/dagInfo.pdb"
 				ImportLibrary="Debug/dagInfo.lib"

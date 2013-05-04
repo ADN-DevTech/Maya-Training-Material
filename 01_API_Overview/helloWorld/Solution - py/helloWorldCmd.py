@@ -1,12 +1,10 @@
-#
 # Copyright (C) 
 # 
 # File: helloWorld.py
 #
-# Dependency Graph Node: 
-#
+# Author: Autodesk Developer Network
 
-#- Python script to execute to test the sample in the Maya script editor
+# Python script to execute to test the sample in the Maya Script Editor
 # import maya
 # maya.cmds.loadPlugin("helloWorldCmd.py")
 # maya.cmds.spHelloWorld()
@@ -18,7 +16,7 @@ import maya.OpenMayaMPx as OpenMayaMPx
 
 kPluginCmdName = "spHelloWorld"
 
-# Command
+# class implementation for custom command
 class scriptedCommand(OpenMayaMPx.MPxCommand):
 	def __init__(self):
 		OpenMayaMPx.MPxCommand.__init__(self)

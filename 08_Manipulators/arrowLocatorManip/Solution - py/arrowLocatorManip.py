@@ -1,3 +1,12 @@
+#
+# Copyright (C) 
+# 
+# File: arrowLocatorManip.py
+#
+# Dependency Graph Node: 
+#
+# Author: Maya Plug-in Wizard 2.0
+
 
 import sys, math
 
