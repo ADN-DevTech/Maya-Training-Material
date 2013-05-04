@@ -1,10 +1,4 @@
-# 
-# File: 
-#
-# Dependency Graph Node: 
-#
-# Author: Maya Plug-in Wizard 2.0
-#
+
 import sys
 import maya.OpenMaya as OpenMaya
 import maya.OpenMayaMPx as OpenMayaMPx
@@ -102,8 +96,8 @@ class nodeInfoCmd(OpenMayaMPx.MPxCommand):
 
 			iter.next()
 
-		#- Return success to Maya
-		return OpenMaya.MStatus.kSuccess
+		#- Return to Maya
+		return
 		
 # Creator
 def cmdCreator():

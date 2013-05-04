@@ -1,12 +1,3 @@
-#
-# Copyright (C) 
-# 
-# File: retrieveWeight.py
-#
-# Dependency Graph Node: 
-#
-# Author: Maya Plug-in Wizard 2.0
-
 
 import maya.OpenMaya as OpenMaya
 import maya.OpenMayaMPx as OpenMayaMPx

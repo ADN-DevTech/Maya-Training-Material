@@ -1,11 +1,3 @@
-#
-# Copyright (C) 
-# 
-# File: sceneMsgCmd.py
-#
-# Dependency Graph Node: 
-#
-# Author: Maya Plug-in Wizard 2.0
 
 
 import maya.OpenMaya as OpenMaya
@@ -70,12 +62,12 @@ class sceneMsgCmd(OpenMayaMPx.MPxCommand):
 		saveCheckCallbackId = #...
 		IDs.append(saveCheckCallbackId)
 		
-		return OpenMaya.MStatus.kSuccess
+		return
 		
 	def undoIt(self):
 		if IDs.length()!= 0: 
 			removeCallback(IDs)
-		return OpenMaya.MStatus.kSuccess
+		return
 		
 	
 # Creator

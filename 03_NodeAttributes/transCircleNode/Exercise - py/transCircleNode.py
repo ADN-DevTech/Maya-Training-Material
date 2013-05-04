@@ -3,10 +3,9 @@
 # 
 # File: 
 #
-# Dependency Graph Node: 
+# Dependency Graph Node: transCircle
 #
-# Author: Maya Plug-in Wizard 2.0
-#
+
 
 import maya.OpenMaya as OpenMaya
 import maya.OpenMayaMPx as OpenMayaMPx
@@ -109,10 +108,10 @@ class transCircleNode(OpenMayaMPx.MPxNode):
 			dataBlock.setClean( plug )
 
 		else:
-			return OpenMaya.MStatus.kUnknownParameter
+			return OpenMaya.kUnknownParameter
 
-		#- Return success to Maya
-		return OpenMaya.MStatus.kSuccess
+		#- Return successfully to Maya
+		return
 
 # Creator
 def nodeCreator():

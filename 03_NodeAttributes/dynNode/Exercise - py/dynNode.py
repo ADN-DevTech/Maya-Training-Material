@@ -3,9 +3,7 @@
 # 
 # File: dynNode.py
 #
-# Dependency Graph Node: 
-#
-# Author: Maya Plug-in Wizard 2.0
+# Dependency Graph Node: dynNode
 #
 
 import maya.OpenMaya as OpenMaya
@@ -100,13 +98,13 @@ class dynNode(OpenMayaMPx.MPxNode):
 			#- Set the new output value to the handle.
 			outputHandle.setFloat( inputValue + dynValue )
 
-			#- Return success to Maya
-			return OpenMaya.MStatus.kSuccess
+			#- Return successfully to Maya
+			return
 			
 		#- Tell Maya that we do not know how to handle this plug, but let's give a chance
 		#- to our parent class to evaluate it.
 		else:
-			return OpenMaya.MStatus.kUnknownParameter
+			return OpenMaya.kUnknownParameter
 			
 	
 # Creator

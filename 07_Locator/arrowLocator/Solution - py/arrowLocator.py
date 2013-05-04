@@ -1,11 +1,3 @@
-#
-# Copyright (C) 
-# 
-# File: arrowLocator.py
-#
-# Dependency Graph Node: 
-#
-# Author: Maya Plug-in Wizard 2.0
 
 
 import sys, math
@@ -17,7 +9,7 @@ import maya.OpenMayaUI as OpenMayaUI
 
 kPluginNodeTypeName = "arrowLocator"
 
-kPluginNodeId = OpenMaya.MTypeId(0x80002)
+kPluginNodeId = OpenMaya.MTypeId(0x00002)
 
 glRenderer = OpenMayaRender.MHardwareRenderer.theRenderer()
 glFT = glRenderer.glFunctionTable()
@@ -30,6 +22,7 @@ arrow = ( [2.00, 0.0, 0.0],
 
 #indices into the arrow array
 triangleIndices = [0,1,2,0,2,3]
+
 
 # Node definition
 class arrowLocator(OpenMayaMPx.MPxLocatorNode):
@@ -130,7 +123,7 @@ class arrowLocator(OpenMayaMPx.MPxLocatorNode):
 		boundingArea = OpenMaya.MBoundingBox(upLeftCorner,downRightCorner)
 		return boundingArea
 
-
+		
 # Creator
 def nodeCreator():
 	return OpenMayaMPx.asMPxPtr( arrowLocator() )
@@ -140,15 +133,15 @@ def nodeInitializer():
 	#Here we create a new attribute type that handles units: angle, distance or time
 	uAttr = OpenMaya.MFnUnitAttribute()
 	arrowLocator.windDirection = uAttr.create("windDirection", "wd", OpenMaya.MFnUnitAttribute.kAngle)
+	uAttr.setDefault(0.0)
 	uAttr.setStorable(True)
 	uAttr.setWritable(True)
 	uAttr.setReadable(True)
 	uAttr.setKeyable(True)
-	uAttr.setMin(0.0)
-	uAttr.setMax(2*math.pi)
+
 	uAttr.setDefault(OpenMaya.MAngle(0.0, OpenMaya.MAngle.kDegrees))
+
 	arrowLocator.addAttribute(arrowLocator.windDirection)
-	return OpenMaya.MStatus.kSuccess
 	
 # Initialize the script plug-in
 def initializePlugin(mobject):
@@ -162,10 +155,9 @@ def initializePlugin(mobject):
 
 # Uninitialize the script plug-in
 def uninitializePlugin(mobject):
-
 	
 	mplugin = OpenMayaMPx.MFnPlugin(mobject)
-	
+
 	try:
 		
 		mplugin.deregisterNode( kPluginNodeId )

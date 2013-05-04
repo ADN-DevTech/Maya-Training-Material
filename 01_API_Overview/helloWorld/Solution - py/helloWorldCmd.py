@@ -1,48 +1,20 @@
-#
-# Copyright (C) 
-# 
-# File: helloWorld.py
-#
-# Dependency Graph Node: 
-#
-
-#- Python script to execute to test the sample in the Maya script editor
-# import maya
-# maya.cmds.loadPlugin("helloWorldCmd.py")
-# maya.cmds.spHelloWorld()
-
-#- Import all the necessary modules here
 import sys
 import maya.OpenMaya as OpenMaya
 import maya.OpenMayaMPx as OpenMayaMPx
 
-kPluginCmdName = "spHelloWorld"
-
-# Command
-class scriptedCommand(OpenMayaMPx.MPxCommand):
-	def __init__(self):
-		OpenMayaMPx.MPxCommand.__init__(self)
-	def doIt(self,argList):
-		print "Hello World!"
-
-# Creator
-def cmdCreator():
-	return OpenMayaMPx.asMPxPtr( scriptedCommand() )
-	
-# Initialize the script plug-in
-def initializePlugin(mobject):
-	mplugin = OpenMayaMPx.MFnPlugin(mobject)
+# Initialize the plug-in
+def initializePlugin(plugin):
 	try:
-		mplugin.registerCommand( kPluginCmdName, cmdCreator )
+		sys.stdout.write("Hello World! The plug-in has been loaded successfully.\n")
 	except:
-		sys.stderr.write( "Failed to register command: %s\n" % kPluginCmdName )
+		sys.stderr.write("Error: Failed in loading plugin....")
 		raise
 
-# Uninitialize the script plug-in
-def uninitializePlugin(mobject):
-	mplugin = OpenMayaMPx.MFnPlugin(mobject)
+
+# Uninitialize the plug-in
+def uninitializePlugin(plugin):
 	try:
-		mplugin.deregisterCommand( kPluginCmdName )
+		sys.stdout.write("The plug-in has been unloaded successfully.\n")
 	except:
-		sys.stderr.write( "Failed to unregister command: %s\n" % kPluginCmdName )
+		sys.stderr.write("Error: Failed in unloading plugin....")
 		raise

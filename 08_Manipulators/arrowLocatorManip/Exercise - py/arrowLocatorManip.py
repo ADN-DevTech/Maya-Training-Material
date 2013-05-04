@@ -1,12 +1,3 @@
-#
-# Copyright (C) 
-# 
-# File: arrowLocatorManip.py
-#
-# Dependency Graph Node: 
-#
-# Author: Maya Plug-in Wizard 2.0
-
 
 import sys, math
 
@@ -287,7 +278,6 @@ def nodeInitializer():
 	#- TODO: get the user defined manipulator associated with this node.
 	#...
 	
-	return OpenMaya.MStatus.kSuccess
 	
 # Initialize the script plug-in
 def initializePlugin(mobject):

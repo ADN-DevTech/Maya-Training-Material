@@ -3,10 +3,9 @@
 # 
 # File: dynNode.py
 #
-# Dependency Graph Node: 
+# Dependency Graph Node: dynNode
 #
-# Author: Maya Plug-in Wizard 2.0
-#
+
 
 import maya.OpenMaya as OpenMaya
 import maya.OpenMayaMPx as OpenMayaMPx
@@ -68,13 +67,13 @@ class dynNode(OpenMayaMPx.MPxNode):
 			print "combined Value", inputValue + dynValue 
 			outputHandle.setFloat( inputValue + dynValue )
 
-			#- Return success to Maya
-			return OpenMaya.MStatus.kSuccess
+			#- Return successfully to Maya
+			return
 			
 		#- Tell Maya that we do not know how to handle this plug, but let's give a chance
 		#- to our parent class to evaluate it.
 		else:
-			return OpenMaya.MStatus.kUnknownParameter
+			return OpenMaya.kUnknownParameter
 			
 	#- No MPxNode member function can be called from the MPxNode constructor. 
 	#- The postConstructor will get called immediately after the constructor 

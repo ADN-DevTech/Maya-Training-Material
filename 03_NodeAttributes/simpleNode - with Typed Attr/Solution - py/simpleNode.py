@@ -5,8 +5,6 @@
 #
 # Dependency Graph Node: simpleNode
 #
-# Author: Maya Plug-in Wizard 2.0
-#
 
 import maya.OpenMaya as OpenMaya
 import maya.OpenMayaMPx as OpenMayaMPx
@@ -63,12 +61,12 @@ class simpleNode(OpenMayaMPx.MPxNode):
 			#- Tell Maya the plug is now clean
 			dataBlock.setClean( plug )
 
-			#- Return success to Maya
-			return OpenMaya.MStatus.kSuccess
+			#- Return successfully to Maya
+			return
 
 		#- Tell Maya that we do not know how to handle this plug, but let give a chance
 		#- to our parent class to evaluate it.
-		return OpenMaya.MStatus.kUnknownParameter
+		return OpenMaya.kUnknownParameter
 
 # Creator
 def nodeCreator():

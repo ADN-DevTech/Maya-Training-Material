@@ -1,10 +1,4 @@
-# 
-# File: 
-#
-# Dependency Graph Node: 
-#
-# Author: Maya Plug-in Wizard 2.0
-#
+
 import sys
 import maya.OpenMaya as OpenMaya
 import maya.OpenMayaMPx as OpenMayaMPx
@@ -92,8 +86,9 @@ class dagInfo(OpenMayaMPx.MPxCommand):
 			# Replace MMatrix __str__ function to the default
 			OpenMaya.MMatrix.__str__ = oldMMatrix_str
 
-		#- Return success to Maya
-		return OpenMaya.MStatus.kSuccess
+		#- Return to Maya
+		return
+		
 #New __str__ function for Making the matrix readable....
 def myMatrix_str(self):
 	return "[[%g,%g,%g,%g][%g,%g,%g,%g][%g,%g,%g,%g][%g,%g,%g,%g]]" % (self(0,0), self(0,1), self(0,2), self(0,3), self(1,0), self(1,1), self(1,2), self(1,3), self(2,0), self(2,1), self(2,2), self(2,3), self(3,0), self(3,1), self(3,2), self(3,3))
