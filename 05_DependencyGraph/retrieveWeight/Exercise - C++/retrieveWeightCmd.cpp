@@ -3,7 +3,7 @@
 // 
 // File: retrieveWeightCmd.cpp
 //
-// MEL Command: retrieveWeight
+// MEL Command: dagScan
 //
 // Author: Maya Plug-in Wizard 2.0
 //

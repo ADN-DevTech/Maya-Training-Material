@@ -1,14 +1,14 @@
-//Maya ASCII 2009 scene
-//Name: 02-spaceSaucer_2009.ma
-//Last modified: Mon, Apr 13, 2009 05:40:04 PM
+//Maya ASCII 2010 scene
+//Name: 02-spaceSaucer_2010.ma
+//Last modified: Sat, Apr 10, 2010 02:33:03 PM
 //Codeset: 1252
-requires maya "2009";
+requires maya "2010";
 currentUnit -l centimeter -a degree -t film;
 fileInfo "application" "maya";
-fileInfo "product" "Maya Unlimited 2009";
-fileInfo "version" "2009 Service Pack 1";
-fileInfo "cutIdentifier" "200903102336-747248";
-fileInfo "osv" "Microsoft Windows XP Service Pack 2 (Build 2600)\n";
+fileInfo "product" "Maya Unlimited 2010";
+fileInfo "version" "2010";
+fileInfo "cutIdentifier" "200907280007-756013";
+fileInfo "osv" "Microsoft Windows XP Service Pack 3 (Build 2600)\n";
 createNode transform -s -n "persp";
 	setAttr ".v" no;
 	setAttr ".t" -type "double3" 24.171885988247613 10.797372375689516 0.019442439218259722 ;
@@ -998,4 +998,4 @@ connectAttr "solidFractal2.msg" ":defaultTextureList1.tx" -na;
 connectAttr "hubLayeredTexture.msg" ":defaultTextureList1.tx" -na;
 connectAttr "fractal1.msg" ":defaultTextureList1.tx" -na;
 connectAttr "file2.msg" ":defaultTextureList1.tx" -na;
-// End of 02-spaceSaucer_2009.ma
+// End of 02-spaceSaucer_2010.ma

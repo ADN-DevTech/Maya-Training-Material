@@ -53,60 +53,63 @@ class transCircleNode(OpenMayaMPx.MPxNode):
 		#- Check which output attribute we have been asked to compute. If this 
 		#- node doesn't know how to compute it, you must return MS::kUnknownParameter.
 
-		if ( plug != transCircleNode.outputTranslateX & plug != transCircleNode.outputTranslateY & plug != transCircleNode.outputTranslateZ & plug != transCircleNode.outputTranslate ):
+		if ( plug == transCircleNode.outputTranslateX or plug == transCircleNode.outputTranslateY or plug == transCircleNode.outputTranslateZ or plug == transCircleNode.outputTranslate ):
+			
+
+			#- Get a handle on the input attributes that we will need for the
+			#- computation. If the value is being supplied via a connection 
+			#- in the dependency graph, then this call will cause all upstream  
+			#- connections to be evaluated so that the correct value is supplied.
+
+			inputData = data.inputValue( transCircleNode.input )
+			scaleData = data.inputValue( transCircleNode.scale )
+			framesData = data.inputValue( transCircleNode.frames )
+
+			#- Retrieve value of current frame attribute,scale factor 
+			#- and number of frames for one circle 
+			currentFrame = inputData.asDouble()
+			scaleFactor  = scaleData.asDouble()
+			framesPerCircle = framesData.asDouble()
+
+			#- Retrieve values on individual input translate attribute
+
+			#- TODO: Retrieve the double value of the X, Y, Z components of the inputTranslate attribute
+
+			inputTranslateXHandle = #...
+			inputTranslateXData = #...
+
+			inputTranslateYHandle = #...
+			inputTranslateYData = #...
+
+			inputTranslateZHandle = #...
+			inputTranslateZData = #...
+
+			#- Calculate corresponding angle based on current frame 
+			angle = 6.2831853 * ( currentFrame/framesPerCircle )
+
+			#- The value of output translate is input translate value plus the value of circular movement  
+			outputTranslateXData = inputTranslateXData + (sin( angle ) * scaleFactor)
+			outputTranslateYData = inputTranslateYData + 1.0
+			outputTranslateZData = inputTranslateZData + (cos( angle ) * scaleFactor)
+
+			#- Get a handle on the output attributes and set the new value.
+
+			#- TODO: Set the double value of the X, Y, Z components of the outputTranslate attribute
+
+			outputTranslateXHandle = #...
+			#...
+
+			outputTranslateYHandle = #...
+			#...
+
+			outputTranslateZHandle = #... 
+			#...
+
+			#- Tell Maya the plug is now clean
+			dataBlock.setClean( plug )
+
+		else:
 			return OpenMaya.MStatus.kUnknownParameter
-
-		#- Get a handle on the input attributes that we will need for the
-		#- computation. If the value is being supplied via a connection 
-		#- in the dependency graph, then this call will cause all upstream  
-		#- connections to be evaluated so that the correct value is supplied.
-
-		inputData = data.inputValue( transCircleNode.input )
-		scaleData = data.inputValue( transCircleNode.scale )
-		framesData = data.inputValue( transCircleNode.frames )
-
-		#- Retrieve value of current frame attribute,scale factor 
-		#- and number of frames for one circle 
-		currentFrame = inputData.asDouble()
-		scaleFactor  = scaleData.asDouble()
-		framesPerCircle = framesData.asDouble()
-
-		#- Retrieve values on individual input translate attribute
-		
-		#- TODO: Retrieve the double value of the X, Y, Z components of the inputTranslate attribute
-		
-		inputTranslateXHandle = #...
-		inputTranslateXData = #...
-
-		inputTranslateYHandle = #...
-		inputTranslateYData = #...
-
-		inputTranslateZHandle = #...
-		inputTranslateZData = #...
-
-		#- Calculate corresponding angle based on current frame 
-		angle = 6.2831853 * ( currentFrame/framesPerCircle )
-		
-		#- The value of output translate is input translate value plus the value of circular movement  
-		outputTranslateXData = inputTranslateXData + (sin( angle ) * scaleFactor)
-		outputTranslateYData = inputTranslateYData + 1.0
-		outputTranslateZData = inputTranslateZData + (cos( angle ) * scaleFactor)
-
-		#- Get a handle on the output attributes and set the new value.
-		
-		#- TODO: Set the double value of the X, Y, Z components of the outputTranslate attribute
-		
-		outputTranslateXHandle = #...
-		#...
-
-		outputTranslateYHandle = #...
-		#...
-
-		outputTranslateZHandle = #... 
-		#...
-
-		#- Tell Maya the plug is now clean
-		dataBlock.setClean( plug )
 
 		#- Return success to Maya
 		return OpenMaya.MStatus.kSuccess
@@ -121,7 +124,7 @@ def nodeCreator():
 #- Return Values: OpenMaya.MStatus.kSuccess / OpenMaya.MStatus.kFailure
 #-
 def nodeInitializer():
-	#- Create a numeric attribute using MFnNumericAttribute
+	#- Create a generic attribute using MFnNumericAttribute
 	nAttr = OpenMaya.MFnNumericAttribute()
 	transCircleNode.input = nAttr.create( "input", "in", OpenMaya.MFnNumericData.kDouble, 0.0 )
 	#- Attribute will be written to files when this type of node is stored

@@ -114,15 +114,13 @@ class dynNode(OpenMayaMPx.MPxNode):
 		#- affect a static attribute (output)
 	
 		#- Check if the dynamic attribute is set to dirty by Maya
-		if dirtyPlug == dynNode.aOutput:
-		#if dirty.partialName() == "da":
+		if dirtyPlug == self.dynAttr:
 			#- Set the output plug to be affected by this dynamic attribute
 			#- by adding the output plug onto the plugArray 
 			thisNode = self.thisMObject()
-			nodeFn = OpenMaya.MFnDependencyNode(thisNode) 
 			try:
-				plug = nodeFn.findPlug("dynAttr")
-				plugArray.append(plug) 	
+				plug = OpenMaya.MPlug(thisNode, dynNode.aOutput)
+				plugArray.append(plug) 
 			except:
 				pass
 				

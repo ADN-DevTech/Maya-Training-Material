@@ -63,8 +63,8 @@ MStatus nodeInfo::parseArgs( const MArgList& args )
 //- This method performs the action of the command. It iterates over all
 //- selected items and prints out connected plug and dependency node type
 //- information.
-//- TODO: Implement doIt() function for your command (the 
-//- TODO: function argument will be "args" for this exercise).
+//- TODO: Define the method called by Maya to execute your command (the 
+//- TODO: function argument will be names args for this exercise).
 //...
 {
 	MStatus stat;			// Status code
@@ -75,7 +75,7 @@ MStatus nodeInfo::parseArgs( const MArgList& args )
 		return stat;
 
 	MSelectionList slist;
-	//- TODO: Retrieve all objects currently selected and put them onto "slist"
+	//- TODO: Retrieve all objects currently selected into the Maya editor and put it onto "slist"
 	//...
 
 
@@ -89,7 +89,7 @@ MStatus nodeInfo::parseArgs( const MArgList& args )
 		//- by using MItSelectionList::getDependNode()
 		//...
 
-		//- TODO: Create a function set for the dependency node (name it "fnDependNode")
+		//- TODO: Create a function set for the dependency node (name it fnDependNode)
 		//...
 
 		//- Check the type of the dependency node

@@ -1,0 +1,4 @@
+global string $gMainWindow;
+$layOut1 = `paneLayout -configuration "single" -parent $gMainWindow`;
+$w3 = `dockControl -allowedArea  "all" -area "left" -floating off -content $layOut1`;
+control -e  -p $layOut1 $dialog1;

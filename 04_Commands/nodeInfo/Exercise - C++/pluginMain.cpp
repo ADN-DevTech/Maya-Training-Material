@@ -24,7 +24,7 @@ MStatus initializePlugin( MObject obj )
 
 	// Add plug-in feature registration here
 	
-	//- TODO: Register your command into Maya, and make sure you register syntax for your command
+	//- TODO: Register your command into Maya, and make sure you define a syntax
 	//...
 
 	if (!status) {

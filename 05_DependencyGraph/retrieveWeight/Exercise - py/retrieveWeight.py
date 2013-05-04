@@ -62,7 +62,7 @@ class retrieveWeight(OpenMayaMPx.MPxCommand):
 
 						#- TODO: Get the value in every element plug
 						valueElem = #...
-						print "The value in this element plug is %i" % valueElem
+						print "The value in this element plug is %f" % valueElem
 
 	
 # Creator

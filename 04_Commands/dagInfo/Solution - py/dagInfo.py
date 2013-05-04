@@ -41,8 +41,7 @@ class dagInfo(OpenMayaMPx.MPxCommand):
 			fnDag = OpenMaya.MFnDagNode(depNode)
 			print "********************************************************"
 			sys.stdout.write( '\n' )
-			print "The selected node name is %s" % fnDag.name()
-			print ", node type : %s" % depNode.apiTypeStr()
+			print "The selected node name is %s, node type : %s" % (fnDag.name(), depNode.apiTypeStr())
 			sys.stdout.write( '\n' )
 
 			#- Retrieve number of instances on this dag node
@@ -61,14 +60,14 @@ class dagInfo(OpenMayaMPx.MPxCommand):
 			fnDag.getAllPaths(dagPathArray)
 			for j in range (0, dagPathArray.length()):
 				instanceDagPath = dagPathArray[j]
-				print "Dag Path %d" % j
-				print " for this node: %s" % instanceDagPath.fullPathName()
+				print "Dag Path %d for this node: %s" % (j, instanceDagPath.fullPathName())
+				
 				sys.stdout.write( '\n' )
 			
 				#- Get the exclusive matrix of this node
 				exMatrix = instanceDagPath.exclusiveMatrix()
 
-				print "The exclusive transformation matrix of this node is "
+				print "The exclusive transformation matrix of this node is:"
 				print exMatrix
 				sys.stdout.write( '\n' )
 
@@ -77,18 +76,17 @@ class dagInfo(OpenMayaMPx.MPxCommand):
 				#- If it is a transform node and its transformation matrix is not identity, they 
 				#- should be different!
 				inMatrix = instanceDagPath.inclusiveMatrix()
-				print "The inclusive transformation matrix of this node is "
+				print "The inclusive transformation matrix of this node is:"
 				print inMatrix
 				sys.stdout.write( '\n' )
 
 				#- If this dag node is a transform node, also get its local transformation matrix
-				if (depNode.hasFn(OpenMaya.MSpace.kTransform)):
+				if (depNode.hasFn(OpenMaya.MFn.kTransform)):
 					fnTrans = OpenMaya.MFnTransform(instanceDagPath)
 					localMatrix = fnTrans.transformation()
-					print "The local transformation matrix represented by this transform node is "
+					print "The local transformation matrix represented by this transform node is:"
 					print localMatrix.asMatrix()
 					sys.stdout.write( '\n' )
-				
 				
 			iter.next()
 			# Replace MMatrix __str__ function to the default

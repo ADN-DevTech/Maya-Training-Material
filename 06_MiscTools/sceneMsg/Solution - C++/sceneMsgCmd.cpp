@@ -34,7 +34,7 @@ MStatus sceneMsgCmd::redoIt()
 
 	//- Register callback for MSceneMessage::kBeforeSave message
 	MCallbackId saveCheckCallbackId = MSceneMessage::addCheckCallback(MSceneMessage::kBeforeSaveCheck,(MMessage::MCheckFunction)saveCheckCallback, NULL,&stat);
-	IDs.append(newCallbackId);
+	IDs.append(saveCheckCallbackId);
 
 	return stat;
 }

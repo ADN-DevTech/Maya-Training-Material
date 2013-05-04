@@ -1,0 +1,5 @@
+global string $gMainWindow;
+$layOut1 = `paneLayout -configuration "single" -parent $gMainWindow`;
+$w3 = `dockControl -allowedArea  "all" -area "bottom" -floating off -content $layOut1`;
+$g = `GraphEditor`;
+control -e  -p $layOut1 graphEditor1Window;

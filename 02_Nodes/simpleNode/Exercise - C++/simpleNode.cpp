@@ -97,10 +97,10 @@ MStatus simpleNode::compute( const MPlug& plug, MDataBlock& data )
 		//- Read the input value from the handle.
 		float result = inputData.asFloat();
 
-		//- Get a handle to the output attribute. Use "MDataBlock::outputValue()", which 
-		//- is similar to the "MDataBlock::inputValue()" call above except that no 
+		//- Get a handle to the output attribute. Use "outputValue", which 
+		//- is similar to the "inputValue" call above except that no 
 		//- dependency graph computation will be done as a result of this call.
-		//- ToDO: Get a handle on the output attribute
+		//- ToDO: Get a handle on the aOutput attribute
 		//...
 
 		//- TODO: Set the new output value to the handle.

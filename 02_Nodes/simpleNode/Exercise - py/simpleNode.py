@@ -10,7 +10,7 @@
 
 import maya.OpenMaya as OpenMaya
 import maya.OpenMayaMPx as OpenMayaMPx
-
+import sys
 #- Assing a unique node ID to your new node class.
 #- Ask ADN or Autodesk product support to reserve IDs for your company. You can
 #- reserve ID by block of 64, 128, 256, or 512 consecutive ID.
@@ -104,7 +104,7 @@ def nodeInitializer():
 	#- method.
 
 	#- Add the attributes we have created to the node
-	simpleNode.addAttribute( simpleNode.input );	
+	simpleNode.addAttribute( simpleNode.input )
 	#- TODO: Add the output attribute to the node type definition
 	#...
 	

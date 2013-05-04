@@ -22,7 +22,7 @@ public:
 	nodeInfo();
 	virtual ~nodeInfo(); 
 
-	//- TODO: Declare doIt() function, which is the key function for your command
+	//- TODO: Declare the method called by Maya to execute your command.
 	//...
 
 	//- Create a new MSyntax object to register arguments

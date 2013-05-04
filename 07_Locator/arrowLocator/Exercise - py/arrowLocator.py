@@ -17,7 +17,7 @@ import maya.OpenMayaUI as OpenMayaUI
 
 kPluginNodeTypeName = "arrowLocator"
 
-kPluginNodeId = OpenMaya.MTypeId(0x00002)
+kPluginNodeId = OpenMaya.MTypeId(0x80002)
 
 glRenderer = OpenMayaRender.MHardwareRenderer.theRenderer()
 glFT = glRenderer.glFunctionTable()
@@ -51,8 +51,8 @@ class arrowLocator(OpenMayaMPx.MPxLocatorNode):
 	#-		status -- selection status of object 
 	#-
 	def draw(self, view, path, style, status):
-                #- TODO: Get a reference of current node
-		#  thisNode =  ...
+		##- TODO: Get a reference of current node
+		thisNode = ##..
 
 		#We're in the draw routine, not the Compute method
 		#therefore it is safe to grab plugs in the following way and
@@ -60,9 +60,10 @@ class arrowLocator(OpenMayaMPx.MPxLocatorNode):
 		#the compute method because it might start a cycle in the
 		#graph.  Here we just need the value of our winddirection
 		#plug so that we can draw our arrow pointing the right way.
-
-                #- TODO: Get the wind direction plug and get its angle value
-                #- ...
+		
+		##- TODO: Get the wind direction plug and get its angle value
+		##...
+		angle = plug.asMAngle()
 
 		#start drawing by OpenGL
 		view.beginGL() 
@@ -131,7 +132,8 @@ class arrowLocator(OpenMayaMPx.MPxLocatorNode):
 
 		boundingArea = OpenMaya.MBoundingBox(upLeftCorner,downRightCorner)
 		return boundingArea
-		
+
+
 # Creator
 def nodeCreator():
 	return OpenMayaMPx.asMPxPtr( arrowLocator() )
@@ -140,20 +142,16 @@ def nodeCreator():
 def nodeInitializer():
 	#Here we create a new attribute type that handles units: angle, distance or time
 	uAttr = OpenMaya.MFnUnitAttribute()
-
-        #- TODO: Create a angle attribute with long name "windDirection" and short name "wd"
-	#- ....
-	uAttr.setDefault(0.0)
+	##TODO: Create a angle attribute with long name "windDirection" and short name "wd"
+	arrowLocator.windDirection = ##...
 	uAttr.setStorable(True)
 	uAttr.setWritable(True)
 	uAttr.setReadable(True)
 	uAttr.setKeyable(True)
-
-        #- TODO: Set the min and max value this attribute can have 0, 2PI
-	#...
-	#...
+	##- TODO: Set the min and max value this attribute can have 0, 2PI
+	##...
+	##...
 	uAttr.setDefault(OpenMaya.MAngle(0.0, OpenMaya.MAngle.kDegrees))
-
 	arrowLocator.addAttribute(arrowLocator.windDirection)
 	return OpenMaya.MStatus.kSuccess
 	
@@ -169,8 +167,10 @@ def initializePlugin(mobject):
 
 # Uninitialize the script plug-in
 def uninitializePlugin(mobject):
-	mplugin = OpenMayaMPx.MFnPlugin(mobject)
 
+	
+	mplugin = OpenMayaMPx.MFnPlugin(mobject)
+	
 	try:
 		
 		mplugin.deregisterNode( kPluginNodeId )

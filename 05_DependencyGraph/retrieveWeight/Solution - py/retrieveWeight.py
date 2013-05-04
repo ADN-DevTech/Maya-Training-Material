@@ -61,7 +61,7 @@ class retrieveWeight(OpenMayaMPx.MPxCommand):
 
 						#- Print out the value in every element plug
 						valueElem = elementPlug.asDouble()
-						print "The value in this element plug is %i" % valueElem
+						print "The value in this element plug is %f" % valueElem
 
 	
 # Creator

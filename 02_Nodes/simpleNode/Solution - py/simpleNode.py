@@ -10,7 +10,7 @@
 
 import maya.OpenMaya as OpenMaya
 import maya.OpenMayaMPx as OpenMayaMPx
-
+import sys
 #- Assing a unique node ID to your new node class.
 #- Ask ADN or Autodesk product support to reserve IDs for your company. You can
 #- reserve ID by block of 64, 128, 256, or 512 consecutive ID.
@@ -53,7 +53,7 @@ class simpleNode(OpenMayaMPx.MPxNode):
 			outputHandle = dataBlock.outputValue( simpleNode.output )
 
 			#- Set the new output value to the handle.
-			outputHandle.setFloat( result * 2 );
+			outputHandle.setFloat( result * 2 )
 
 			#- Mark the destination plug as being clean. This will prevent the
 			#- dependency graph from repeating this calculation until an input 
@@ -102,9 +102,9 @@ def nodeInitializer():
 	#- method.
 
 	#- Add the attributes we have created to the node
-	simpleNode.addAttribute( simpleNode.input );	
+	simpleNode.addAttribute( simpleNode.input )	
 	#- Add the aOutput attribute to the node type definition
-	simpleNode.addAttribute( simpleNode.output );
+	simpleNode.addAttribute( simpleNode.output )
 	
 	#- Finally tell Maya how the information should flow through your node.
 	#- This will also tell Maya how the dirty flag is propagated in your node
@@ -114,7 +114,7 @@ def nodeInitializer():
 	#- Set up a dependency between the input and the output. This will cause
 	#- the output to be marked dirty when the input changes. The output will
 	#- then be recomputed the next time the value of the output is requested.
-	simpleNode.attributeAffects( simpleNode.input, simpleNode.output );
+	simpleNode.attributeAffects( simpleNode.input, simpleNode.output )
 
 # Initialize the script plug-in
 def initializePlugin(mobject):
