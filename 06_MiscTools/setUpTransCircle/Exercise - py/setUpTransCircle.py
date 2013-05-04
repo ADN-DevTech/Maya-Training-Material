@@ -1,3 +1,13 @@
+#
+# Copyright (C) 
+# 
+# File: setUpTransCircle.py
+#
+# Dependency Graph Node: 
+#
+# Author: Maya Plug-in Wizard 2.0
+
+
 import sys, math
 
 import maya.OpenMaya as OpenMaya
@@ -36,7 +46,7 @@ class transCircle(OpenMayaMPx.MPxNode):
 	#- 	data - object that provides access to the attributes for this node
 	def compute(self, plug, data):
 		if (plug != transCircle.aOutputTranslateX and plug != transCircle.aOutputTranslateY and plug != transCircle.aOutputTranslateZ and plug != transCircle.aOutputTranslate):
-			return OpenMaya.kUnknownParameter
+			return OpenMaya.MStatus.kUnknownParameter
 	
 		inputData = data.inputValue( transCircle.aInput )
 		scaleData = data.inputValue( transCircle.aScale )
@@ -76,8 +86,8 @@ class transCircle(OpenMayaMPx.MPxNode):
 		#- Tell Maya the plug is now clean
 		data.setClean(plug)
 	
-		#- Return to Maya
-		return
+		#- Return success to Maya
+		return OpenMaya.MStatus.kSuccess
 
 	
 
@@ -152,7 +162,7 @@ def nodeInitializer():
 	transCircle.attributeAffects( transCircle.aFrames, transCircle.aOutputTranslateX )
 	transCircle.attributeAffects( transCircle.aFrames, transCircle.aOutputTranslateY )
 
-	return
+	return OpenMaya.MStatus.kSuccess
 	
 # Creator
 def nodeCreator():

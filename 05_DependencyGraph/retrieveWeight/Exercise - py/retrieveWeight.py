@@ -1,3 +1,12 @@
+#
+# Copyright (C) 
+# 
+# File: retrieveWeight.py
+#
+# Dependency Graph Node: 
+#
+# Author: Maya Plug-in Wizard 2.0
+
 
 import maya.OpenMaya as OpenMaya
 import maya.OpenMayaMPx as OpenMayaMPx
@@ -11,6 +20,7 @@ class retrieveWeight(OpenMayaMPx.MPxCommand):
 		OpenMayaMPx.MPxCommand.__init__(self)
 		
 	def doIt(self, args):
+	
 
 		self.blendShapeNode = OpenMaya.MObject()
 		selList = OpenMaya.MSelectionList()

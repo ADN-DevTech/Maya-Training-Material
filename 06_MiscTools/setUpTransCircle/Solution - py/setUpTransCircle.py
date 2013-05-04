@@ -1,3 +1,13 @@
+#
+# Copyright (C) 
+# 
+# File: setUpTransCircle.py
+#
+# Dependency Graph Node: 
+#
+# Author: Maya Plug-in Wizard 2.0
+
+
 import sys, math
 
 import maya.OpenMaya as OpenMaya
@@ -36,7 +46,7 @@ class transCircle(OpenMayaMPx.MPxNode):
 	#- 	data - object that provides access to the attributes for this node
 	def compute(self, plug, data):
 		if (plug != transCircle.aOutputTranslateX and plug != transCircle.aOutputTranslateY and plug != transCircle.aOutputTranslateZ and plug != transCircle.aOutputTranslate):
-			return OpenMaya.kUnknownParameter
+			return OpenMaya.MStatus.kUnknownParameter
 	
 		inputData = data.inputValue( transCircle.aInput )
 		scaleData = data.inputValue( transCircle.aScale )
@@ -76,8 +86,8 @@ class transCircle(OpenMayaMPx.MPxNode):
 		#- Tell Maya the plug is now clean
 		data.setClean(plug)
 	
-		#- Return to Maya
-		return
+		#- Return success to Maya
+		return OpenMaya.MStatus.kSuccess
 
 	
 
@@ -152,7 +162,7 @@ def nodeInitializer():
 	transCircle.attributeAffects( transCircle.aFrames, transCircle.aOutputTranslateX )
 	transCircle.attributeAffects( transCircle.aFrames, transCircle.aOutputTranslateY )
 
-	return
+	return OpenMaya.MStatus.kSuccess
 	
 # Creator
 def nodeCreator():
@@ -179,7 +189,7 @@ class setUpTransCircle(OpenMayaMPx.MPxCommand):
 		
 	def doIt(self,argList):
 		#- Create a transCircle node and two Nurbs spheres
-		transCircle = OpenMaya.MObject()
+		#transCircle = OpenMaya.MObject()
 		transCircle = self.__dgMod.createNode("transCircle")
 		self.__dgMod.renameNode(transCircle,"circleNode1")
 
@@ -192,34 +202,6 @@ class setUpTransCircle(OpenMayaMPx.MPxCommand):
 		#- code work.
 		#- Now force these operation to be executed by calling the DG modifier doIt() method.
 		self.__dgMod.doIt()
-
-		#- The following code is one sample code if you want to simulate "sphere -n sphere1 -r 1" manually from MDGModifier and MDagModifier
-		'''
-		testNOde = OpenMaya.MObject()
-		testNOde = self.__dgMod.createNode("makeNurbSphere")
-
-		nurbsSphereFn = OpenMaya.MFnDependencyNode(testNOde)
-		radiusPlug = OpenMaya.MPlug()
-		radiusPlug = nurbsSphereFn.findPlug("radius")
-		radiusPlug.setFloat(1.0f)
-		self.__dgMod.doIt()
-
-		self.dagMod = OpenMaya.MDagModifier()
-		nurbsTransform = OpenMaya.MObject()
-		nurbsTransform = self.dagMod.createNode("nurbsSurface")
-		self.dagMod.doIt()
-		outputPlug = OpenMaya.MPlug()
-		outputPlug = nurbsSphereFn.findPlug("outputSurface")
-
-
-		transformFn = OpenMaya.MFnDagNode(nurbsTransform)
-		nurbsFn = OpenMaya.MFnDagNode(transformFn.child(0))
-		createPlug = OpenMaya.MPlug()
-		createPlug = nurbsFn.findPlug("create")
-
-		self.dagMod.connect(outputPlug, createPlug)
-		self.dagMod.doIt()
-		'''
 
 		selList = OpenMaya.MSelectionList()
 		#- Find the Nurbs sphere nodes and transCircle node
@@ -238,10 +220,7 @@ class setUpTransCircle(OpenMayaMPx.MPxCommand):
 		fnSphereTwo = OpenMaya.MFnDependencyNode(sphereTwoDep)
 		fnTransCircleNode= OpenMaya.MFnDependencyNode(transCircle)
 
-		inputTransAttr = OpenMaya.MObject()
-		sphereTwoTranslateAttr = OpenMaya.MObject()
-		outputTransAttr = OpenMaya.MObject()
-		sphereTranslateAttr = OpenMaya.MObject()
+
 		
 		inputTransAttr = fnTransCircleNode.attribute("inputTranslate")
 		
@@ -269,6 +248,8 @@ class setUpTransCircle(OpenMayaMPx.MPxCommand):
 
 		#- Now force these operation to be executed by calling the DG modifier doIt() method.
 		self.__dgMod.doIt()
+
+		#return OpenMaya.MStatus.kSuccess
 
 	def isUndoable(self):
 		return True

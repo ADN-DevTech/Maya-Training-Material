@@ -1,14 +1,49 @@
-import sys
-import maya.OpenMaya as OpenMaya
-import maya.OpenMayaMPx as OpenMayaMPx
+#
+# Copyright (C) 
+# 
+# File: helloWorld.py
+#
+# Dependency Graph Node: arrowLocator
+#
+# Author: 
+#
 
-# Initialize the plug-in
-def initializePlugin(plugin):
-# implement printing out methods here for loading the plug-in 
+#- Python script to execute to test the sample in the Maya script editor
+# import maya
+# maya.cmds.loadPlugin("helloWorldCmd.py")
+# maya.cmds.spHelloWorld()
+
+#- TODO: Import all the necessary modules here
+#...
+
+kPluginCmdName = "spHelloWorld"
+
+# Command
+class scriptedCommand(OpenMayaMPx.MPxCommand):
+#- TODO: Add Implementation of __init__(self) and doIt(self,argList)
+#...
 
 
-
-# Uninitialize the plug-in
-def uninitializePlugin(plugin):
-#implement printing out methods here for unloading plug-in	
+# Creator
+#- TODO: Implement the creator function and apply asMPxPtr() to it
+#...
 	
+# Initialize the script plug-in
+def initializePlugin(mobject):
+	mplugin = OpenMayaMPx.MFnPlugin(mobject)
+	try:
+#- TODO: Register this custom command                
+#...
+	except:
+		sys.stderr.write( "Failed to register command: %s\n" % kPluginCmdName )
+		raise
+
+# Uninitialize the script plug-in
+def uninitializePlugin(mobject):
+	mplugin = OpenMayaMPx.MFnPlugin(mobject)
+	try:
+#- TODO: Deregister this custom command                 
+#...
+	except:
+		sys.stderr.write( "Failed to unregister command: %s\n" % kPluginCmdName )
+		raise
