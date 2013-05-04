@@ -55,7 +55,7 @@ MStatus dagInfo::doIt(const MArgList& )
 		for(unsigned int j = 0; j < dagPathArray.length(); j++)
 		{
 			MDagPath instanceDagPath = dagPathArray[j];
-			//- TODO: Get this instance full dag path and print it
+			//- TODO: Get the full dag path of this instance and print it
 			cout<<"Dag Path "<<j<<" for this node:"<< //...
 				<<endl;
 		

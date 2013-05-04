@@ -40,6 +40,7 @@ MStatus retrieveWeightCmd::doIt(const MArgList&)
 			if(weightArrayPlug.isArray(&stat))
 			{
 				MString plugName = weightArrayPlug.name(&stat);
+				cout<<"///////////////////////////////////////////////"<<endl;
 				cout<<"Plug "<<plugName<<" is an array plug."<<endl;
 				
 				//- Find how many elements are in this multi plug
