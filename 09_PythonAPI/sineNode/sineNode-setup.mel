@@ -1,0 +1,5 @@
+polySphere;
+createNode spSineNode -n sine1;
+connectAttr time1.outTime sine1.input;
+connectAttr time1.outTime pSphere1.translateX;
+connectAttr sine1.output pSphere1.translateY;
