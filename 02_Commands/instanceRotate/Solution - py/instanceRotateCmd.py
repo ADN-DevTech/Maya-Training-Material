@@ -118,7 +118,7 @@ class instanceRotate(OpenMayaMPx.MPxCommand):
 
 		
 
-	#- This method should undo the work done be the redoIt method based on the 
+	#- This method should undo the work done by the redoIt method based on the 
 	#- internal class data only.
 	def undoIt(self, args):
 		OpenMaya.MGlobal.displayInfo( "instanceRotate command undone!\n" )

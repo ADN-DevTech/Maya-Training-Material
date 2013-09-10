@@ -76,5 +76,5 @@ MStatus dagInfo::doIt(const MArgList& )
 	}
 
 	//- Return success to Maya
-	return stat;
+	return MS::kSuccess;
 }

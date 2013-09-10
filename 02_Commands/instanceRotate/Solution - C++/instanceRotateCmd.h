@@ -42,7 +42,7 @@ public:
 	//- This method should do the actual work of the command based on the internal 
 	//- class data only. Internal class data should be set in the doIt method.
 	virtual MStatus redoIt();
-	//- This method should undo the work done be the redoIt method based on the 
+	//- This method should undo the work done by the redoIt method based on the 
 	//- internal class data only.
 	virtual MStatus undoIt();
 	//- This method is used to specify whether or not the command is undoable. In 

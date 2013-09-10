@@ -123,7 +123,7 @@ MStatus instanceRotate::redoIt()
 	return MS::kSuccess;
 }
 
-//- This method should undo the work done be the redoIt method based on the 
+//- This method should undo the work done by the redoIt method based on the 
 //- internal class data only.
 MStatus instanceRotate::undoIt()
 {

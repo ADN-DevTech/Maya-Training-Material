@@ -64,7 +64,7 @@ MStatus nodeInfo::parseArgs( const MArgList& args )
 //- selected items and prints out connected plug and dependency node type
 //- information.
 //- TODO: Define the method called by Maya to execute your command (the 
-//- TODO: function argument will be names args for this exercise).
+//- function argument will be named args for this exercise).
 //...
 {
 	MStatus stat;			// Status code
