@@ -23,7 +23,7 @@ public:
 	}
 	
 	//- This method should perform a command by setting up internal class data
-	//- and then calling the redoIt method if undo is suuported by the command.
+	//- and then calling the redoIt method if undo is supported by the command.
 	//- The actual action performed by the command should be done in the redoIt 
 	//- method. This is a pure virtual method, and must be overridden in derived 
 	//- classes.
