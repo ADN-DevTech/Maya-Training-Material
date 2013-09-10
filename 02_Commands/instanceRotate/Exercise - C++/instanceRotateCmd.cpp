@@ -57,7 +57,7 @@ MStatus instanceRotate::doIt( const MArgList& argList)
 	}
 	else
 	{
-		if(argDB.isFlagSet(ROTATEFLAG, &stat)|| argDB.isFlagSet(ROTATELONGFLAG, &stat))
+		if(argDB.isFlagSet(ROTATEFLAG, &stat))
 		{	
 			uint flag =0;
 			//- The user enters 1, 2, or 3 to indicate x, y, or z rotation axis
