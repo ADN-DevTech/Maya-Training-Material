@@ -5,8 +5,6 @@
 //
 // MEL Command: setUpTransCircle
 //
-// Author: Maya Plug-in Wizard 2.0
-//
 #include "setUpTransCircleCmd.h"
 #include "transCircleNode.h"
 
@@ -22,14 +20,13 @@
 #include <maya/MSelectionList.h>
 #include <maya/MDagModifier.h>
 
-//- Here is what you need to do to set up the transCircle node
+//- Here is what you need to set up the transCircle node
 //- createNode transCircle -n circleNode1;
 //- sphere -n sphere1 -r 1;
 //- sphere -n sphere2 -r 2;
 //- connectAttr sphere2.translate circleNode1.inputTranslate;
 //- connectAttr circleNode1.outputTranslate sphere1.translate;
 //- connectAttr time1.outTime circleNode1.input;
-//- Here is what you need to do to set up the transCircle node
 
 MStatus setUpTransCircle::doIt( const MArgList& argList)
 {
@@ -51,9 +48,9 @@ MStatus setUpTransCircle::doIt( const MArgList& argList)
 
 //- The following code is one sample code if you want to simulate "sphere -n sphere1 -r 1" manually from MDGModifier and MDagModifier
 /*
-	MObject testNOde = dgMod.createNode(MString("makeNurbSphere"),&stat);
+	MObject testNode = dgMod.createNode(MString("makeNurbSphere"),&stat);
 
-	MFnDependencyNode nurbsSphereFn(testNOde);
+	MFnDependencyNode nurbsSphereFn(testNode);
 	MPlug radiusPlug = nurbsSphereFn.findPlug("radius");
 	radiusPlug.setFloat(1.0f);
 	dgMod.doIt();

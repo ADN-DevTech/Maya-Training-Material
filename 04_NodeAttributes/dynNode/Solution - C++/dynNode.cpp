@@ -88,7 +88,7 @@ MStatus dynNode::initialize()
 
 	//- Create a generic attribute using MFnNumericAttribute
 	MFnNumericAttribute nAttr;
-	input = nAttr.create( "input", "in", MFnNumericData::kFloat, 0.0 );
+	dynNode::input = nAttr.create( "input", "in", MFnNumericData::kFloat, 0.0 );
 	//- Attribute will be written to files when this type of node is stored
  	nAttr.setStorable(true);
 	//- Attribute is keyable and will show up in the channel box
@@ -96,14 +96,14 @@ MStatus dynNode::initialize()
 
 	//- Initialize a float output attribute using the MFnNumericAttribute
 	//- class. Make that attribute is not saved into Maya file.
-	output = nAttr.create( "output", "out", MFnNumericData::kFloat, 0.0 );
+	dynNode::output = nAttr.create( "output", "out", MFnNumericData::kFloat, 0.0 );
 	//- Attribute will not be written to files when this type of node is stored
 	nAttr.setStorable(false);
 
 	//- Now add the attribute to your node definition using the addAttribute()
 	//- method.
-	addAttribute( input );	
-	addAttribute( output );
+	addAttribute( dynNode::input );	
+	addAttribute( dynNode::output );
 	
 	//- Finally tell Maya how the information should flow through your node.
 	//- This will also tell Maya how the dirty flag is propagated in your node
@@ -112,7 +112,7 @@ MStatus dynNode::initialize()
 	//- Set up a dependency between the input and the output. This will cause
 	//- the output to be marked dirty when the input changes. The output will
 	//- then be recomputed the next time the value of the output is requested.
-	attributeAffects( input, output );
+	attributeAffects( dynNode::input, dynNode::output );
 
 	//- Return success to Maya
 	return MS::kSuccess;
@@ -130,13 +130,13 @@ MStatus dynNode::compute( const MPlug& plug, MDataBlock& data )
 	//- Check which output attribute we have been asked to compute. If this 
 	//- node doesn't know how to compute it, you must return MS::kUnknownParameter.
 
-	if( plug == output )
+	if( plug == dynNode::output )
 	{
 		//- Get a handle to the input attribute that we will need for the
 		//- computation. If the value is being supplied via a connection 
 		//- in the dependency graph, then this call will cause all upstream  
 		//- connections to be evaluated so that the correct value is supplied.
-		MDataHandle inputData = data.inputValue( input, &returnStatus );
+		MDataHandle inputData = data.inputValue( dynNode::input, &returnStatus );
 
 		//- Read the input value from the handle.
 		float inputValue = inputData.asFloat();
@@ -145,13 +145,12 @@ MStatus dynNode::compute( const MPlug& plug, MDataBlock& data )
 		//- retrieve the dynamic attribute value
 		MDataHandle dynData = data.inputValue( dynAttr, &returnStatus );
 		float dynValue = dynData.asFloat();
-		
 
 		//- Get a handle to the output attribute. This is similar to the
 		//- "inputValue" call above except that no dependency graph 
 		//- computation will be done as a result of this call.
 
-		//- Get a handle on the aOutput attribute
+		//- Get a handle on the output attribute
 		MDataHandle outputHandle = data.outputValue( dynNode::output );
 
 		//- Set the new output value to the handle.

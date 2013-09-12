@@ -2,10 +2,10 @@
 # 
 # Author: Autodesk Developer Network
 
-#For this exercise, search for the TODO keywords and follow the instructions in
-#comments. If you are unsure of what you need to do, feel free to ask the instructor
-#or look into the solution folder.
-#Each #... line is a line of code you need to write or complete.
+# For this exercise, search for the TODO keywords and follow the instructions in
+# comments. If you are unsure of what you need to do, feel free to ask the instructor
+# or look into the solution folder.
+# Each #... line is a line of code you need to write or complete.
 
 import sys, math
 
@@ -164,15 +164,14 @@ def nodeCreator():
 def cmdCreator():
 	return OpenMayaMPx.asMPxPtr(setUpTransCircle())
 
-#- Here is what you need to do to set up the transCircle node
+#- Here is what you need to set up the transCircle node
 #- createNode transCircle -n circleNode1
 #- sphere -n sphere1 -r 1
 #- sphere -n sphere2 -r 2
 #- connectAttr sphere2.translate circleNode1.inputTranslate
 #- connectAttr circleNode1.outputTranslate sphere1.translate
 #- connectAttr time1.outTime circleNode1.input
-#- Here is what you need to do to set up the transCircle node
-# command
+
 class setUpTransCircle(OpenMayaMPx.MPxCommand):
 
 	def __init__(self):
@@ -199,10 +198,10 @@ class setUpTransCircle(OpenMayaMPx.MPxCommand):
 
 		#- The following code is one sample code if you want to simulate "sphere -n sphere1 -r 1" manually from MDGModifier and MDagModifier
 		'''
-		testNOde = OpenMaya.MObject()
-		testNOde = self.__dgMod.createNode("makeNurbSphere")
+		testNode = OpenMaya.MObject()
+		testNode = self.__dgMod.createNode("makeNurbSphere")
 
-		nurbsSphereFn = OpenMaya.MFnDependencyNode(testNOde)
+		nurbsSphereFn = OpenMaya.MFnDependencyNode(testNode)
 		radiusPlug = OpenMaya.MPlug()
 		radiusPlug = nurbsSphereFn.findPlug("radius")
 		radiusPlug.setFloat(1.0f)

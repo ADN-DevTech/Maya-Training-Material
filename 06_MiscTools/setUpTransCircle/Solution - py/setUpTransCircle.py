@@ -1,12 +1,6 @@
-#
 # Copyright (C) 
 # 
-# File: setUpTransCircle.py
-#
-# Dependency Graph Node: 
-#
-# Author: Maya Plug-in Wizard 2.0
-
+# Author: Autodesk Developer Network
 
 import sys, math
 
@@ -165,15 +159,14 @@ def nodeCreator():
 def cmdCreator():
 	return OpenMayaMPx.asMPxPtr(setUpTransCircle())
 
-#- Here is what you need to do to set up the transCircle node
+#- Here is what you need to set up the transCircle node
 #- createNode transCircle -n circleNode1
 #- sphere -n sphere1 -r 1
 #- sphere -n sphere2 -r 2
 #- connectAttr sphere2.translate circleNode1.inputTranslate
 #- connectAttr circleNode1.outputTranslate sphere1.translate
 #- connectAttr time1.outTime circleNode1.input
-#- Here is what you need to do to set up the transCircle node
-# command
+
 class setUpTransCircle(OpenMayaMPx.MPxCommand):
 
 	def __init__(self):
