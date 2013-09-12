@@ -15,7 +15,7 @@
 //- Ask ADN or Autodesk product support to reserve IDs for your company. You can
 //- reserve ID by block of 64, 128, 256, or 512 consecutive ID.
 //-
-//- In the solution project, 0x00001 is a temporary ID for reserved for development. Never use that ID in a
+//- In the solution project, 0x00001 is a temporary ID reserved for development. Never use that ID in a
 //- production environment.
 
 //- TODO: Define here your unique node ID
@@ -39,7 +39,7 @@ MStatus simpleNode::initialize()
 
 	//- Create a generic attribute using MFnNumericAttribute
 	MFnNumericAttribute nAttr;
-	input = nAttr.create( "input", "in", MFnNumericData::kFloat, 0.0 );
+	simpleNode::input = nAttr.create( "input", "in", MFnNumericData::kFloat, 0.0 );
 	//- Attribute will be written to files when this type of node is stored
  	nAttr.setStorable(true);
 	//- Attribute is keyable and will show up in the channel box
@@ -56,7 +56,7 @@ MStatus simpleNode::initialize()
 	//- method.
 
 	//- Add the attributes we have created to the node
-	addAttribute( input );	
+	addAttribute( simpleNode::input );	
 	//- TODO: Add the output attribute to the node type definition
 	//...
 	
@@ -81,18 +81,16 @@ MStatus simpleNode::initialize()
 //- 	data - object that provides access to the attributes for this node
 MStatus simpleNode::compute( const MPlug& plug, MDataBlock& data )
 {
-	MStatus returnStatus;
- 
 	//- Check which output attribute we have been asked to compute. If this 
 	//- node doesn't know how to compute it, you must return MS::kUnknownParameter.
 
-	if( plug == output )
+	if( plug == simpleNode::output )
 	{
 		//- Get a handle to the input attribute that we will need for the
 		//- computation. If the value is being supplied via a connection 
 		//- in the dependency graph, then this call will cause all upstream  
 		//- connections to be evaluated so that the correct value is supplied.
-		MDataHandle inputData = data.inputValue( input, &returnStatus );
+		MDataHandle inputData = data.inputValue( simpleNode::input );
 
 		//- Read the input value from the handle.
 		float result = inputData.asFloat();
@@ -100,10 +98,11 @@ MStatus simpleNode::compute( const MPlug& plug, MDataBlock& data )
 		//- Get a handle to the output attribute. Use "outputValue", which 
 		//- is similar to the "inputValue" call above except that no 
 		//- dependency graph computation will be done as a result of this call.
-		//- ToDO: Get a handle on the aOutput attribute
+		//- TODO: Get a handle on the output attribute
 		//...
 
-		//- TODO: Set the new output value to the handle.
+		//- TODO: Set the new output value to the handle (multiply the value by 2 for
+		//- example to see a change [result * 2])
 		//...
 
 		//- Mark the destination plug as being clean. This will prevent the

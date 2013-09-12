@@ -10,12 +10,14 @@
 import maya.OpenMaya as OpenMaya
 import maya.OpenMayaMPx as OpenMayaMPx
 import sys
+
 #- Assing a unique node ID to your new node class.
 #- Ask ADN or Autodesk product support to reserve IDs for your company. You can
 #- reserve ID by block of 64, 128, 256, or 512 consecutive ID.
 #-
-#- 0x80001 is a temporary ID for reserved for development. Never use that ID in a
+#- In the solution project, 0x00001 is a temporary ID reserved for development. Never use that ID in a
 #- production environment.
+
 kPluginNodeTypeName = "simpleNode"
 #- TODO: Define here your unique node ID
 simpleNodeId = #...
@@ -53,7 +55,8 @@ class simpleNode(OpenMayaMPx.MPxNode):
 			#- Get a handle on the aOutput attribute
 			outputHandle = dataBlock.outputValue( simpleNode.output )
 
-			#- TODO: Set the new output value to the handle.
+			#- TODO: Set the new output value to the handle (multiply the value by 2 for
+			#- example to see a change [result * 2])
 			#...
 
 			#- Mark the destination plug as being clean. This will prevent the

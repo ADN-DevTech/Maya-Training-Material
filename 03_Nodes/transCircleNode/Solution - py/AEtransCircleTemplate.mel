@@ -72,7 +72,7 @@ global proc AEtransCircleTemplate( string $nodeName )
 
 	editorTemplate -beginScrollLayout;
 
-	// The all go into the collapsable "Parameters" section
+	// They all go into the collapsable "Parameters" section
 	editorTemplate -beginLayout "Parameters" -collapse false;
 
 	   // Add a "special" control for the scale attribute that allow
@@ -110,7 +110,7 @@ global proc AEtransCircleTemplate( string $nodeName )
 //
 global proc transCircleScaleNew( string $attrName )
 {
-	// Maya the "quick set" control for the scale attribute
+	// Create the "quick set" control for the scale attribute
 	radioButtonGrp
 		-label "Quick Scale"
 		-numberOfRadioButtons 3

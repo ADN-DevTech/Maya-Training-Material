@@ -37,7 +37,7 @@ MStatus simpleNode::initialize()
 
 	//- Create a generic attribute using MFnNumericAttribute
 	MFnNumericAttribute nAttr;
-	input = nAttr.create( "input", "in", MFnNumericData::kFloat, 0.0 );
+	simpleNode::input = nAttr.create( "input", "in", MFnNumericData::kFloat, 0.0 );
 	//- Attribute will be written to files when this type of node is stored
  	nAttr.setStorable(true);
 	//- Attribute is keyable and will show up in the channel box
@@ -45,7 +45,7 @@ MStatus simpleNode::initialize()
 
 	//- Initialize a float output attribute using the MFnNumericAttribute
 	//- class. Make that attribute definition not saved into Maya file.
-	output = nAttr.create( "output", "out", MFnNumericData::kFloat, 0.0 );
+	simpleNode::output = nAttr.create( "output", "out", MFnNumericData::kFloat, 0.0 );
 	//- Attribute will not be written to files when this type of node is stored
 	nAttr.setStorable(false);
 	
@@ -53,9 +53,9 @@ MStatus simpleNode::initialize()
 	//- method.
 
 	//- Add the attributes we have created to the node
-	addAttribute( input );	
+	addAttribute( simpleNode::input );	
 	//- Add the aOutput attribute to the node type definition
-	addAttribute( output );
+	addAttribute( simpleNode::output );
 	
 	//- Finally tell Maya how the information should flow through your node.
 	//- This will also tell Maya how the dirty flag is propagated in your node
@@ -65,7 +65,7 @@ MStatus simpleNode::initialize()
 	//- Set up a dependency between the input and the output. This will cause
 	//- the output to be marked dirty when the input changes. The output will
 	//- then be recomputed the next time the value of the output is requested.
-	attributeAffects( input, output );
+	attributeAffects( simpleNode::input, simpleNode::output );
 
 	//- Return success to Maya
 	return MS::kSuccess;
@@ -78,18 +78,16 @@ MStatus simpleNode::initialize()
 //- 	data - object that provides access to the attributes for this node
 MStatus simpleNode::compute( const MPlug& plug, MDataBlock& data )
 {
-	MStatus returnStatus;
- 
 	//- Check which output attribute we have been asked to compute. If this 
 	//- node doesn't know how to compute it, you must return MS::kUnknownParameter.
 
-	if( plug == output )
+	if( plug == simpleNode::output )
 	{
 		//- Get a handle to the input attribute that we will need for the
 		//- computation. If the value is being supplied via a connection 
 		//- in the dependency graph, then this call will cause all upstream  
 		//- connections to be evaluated so that the correct value is supplied.
-		MDataHandle inputData = data.inputValue( input, &returnStatus );
+		MDataHandle inputData = data.inputValue( simpleNode::input );
 
 		//- Read the input value from the handle.
 		float result = inputData.asFloat();
@@ -98,7 +96,7 @@ MStatus simpleNode::compute( const MPlug& plug, MDataBlock& data )
 		//- "inputValue" call above except that no dependency graph 
 		//- computation will be done as a result of this call.
 
-		//- Get a handle on the aOutput attribute
+		//- Get a handle on the output attribute
 		MDataHandle outputHandle = data.outputValue( simpleNode::output );
 
 		//- Set the new output value to the handle.

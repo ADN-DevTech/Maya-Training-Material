@@ -15,7 +15,7 @@ import maya.OpenMayaMPx as OpenMayaMPx
 #- Ask ADN or Autodesk product support to reserve IDs for your company. You can
 #- reserve ID by block of 64, 128, 256, or 512 consecutive ID.
 #-
-#- 0x80013 is a temporary ID for reserved for development. Never use that ID in a
+#- 0x80013 is a temporary ID reserved for development. Never use that ID in a
 #- production environement.
 kPluginNodeTypeName = "transCircle"
 transCircleNodeId = OpenMaya.MTypeId(0x80013)

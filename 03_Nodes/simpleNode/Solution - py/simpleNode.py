@@ -16,10 +16,10 @@ import sys
 #- Ask ADN or Autodesk product support to reserve IDs for your company. You can
 #- reserve ID by block of 64, 128, 256, or 512 consecutive ID.
 #-
-#- 0x80001 is a temporary ID for reserved for development. Never use that ID in a
+#- 0x00001 is a temporary ID for reserved for development. Never use that ID in a
 #- production environment.
 kPluginNodeTypeName = "simpleNode"
-simpleNodeId = OpenMaya.MTypeId(0x80001)
+simpleNodeId = OpenMaya.MTypeId(0x00001)
 
 # Node definition
 class simpleNode(OpenMayaMPx.MPxNode):
