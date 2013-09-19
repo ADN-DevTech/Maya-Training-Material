@@ -19,7 +19,7 @@ on the Maya C++/Python API.
 
 * Disclaimer: We are aware that materials is not free of errors. 
   We intend to correct them as we encounter. We hope this will 
-  be still useful for you to get started with Revit API programming. 
+  be still useful for you to get started with Maya API programming. 
 
 Good luck!  
 
