@@ -21,7 +21,7 @@ MStatus initializePlugin( MObject obj )
 //
 { 
 	MStatus   status;
-	MFnPlugin plugin( obj, "", "2009", "Any");
+	MFnPlugin plugin( obj, "", "2012", "Any");
 
 	// Add plug-in feature registration here
 	//
