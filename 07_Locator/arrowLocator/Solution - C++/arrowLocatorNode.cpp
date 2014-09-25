@@ -301,19 +301,12 @@ void arrowLocatorOverride::draw(
 		return ;
 	if ( theRenderer->drawAPIIsOpenGL () ) {
 		
-		glMatrixMode(GL_MODELVIEW);
-		glPushMatrix();
-		glLoadMatrixd(transform.matrix[0]);
-		glMatrixMode(GL_PROJECTION);
-		glPushMatrix();
-		glLoadMatrixd(projection.matrix[0]);
-
 		glPushAttrib(GL_CURRENT_BIT);
 		glColor4fv(color);
 
-		//- Draw the outline of the arrow shape
-		glBegin( GL_LINE_STRIP);
+		glPushMatrix();
 		glRotated(-rotationAngle.asDegrees(), 0.0, 1.0, 0.0);
+		glBegin( GL_LINE_STRIP);
 		glVertex3f(arrow[0][0],arrow[0][1],arrow[0][2]);
 		glVertex3f(arrow[1][0],arrow[1][1],arrow[1][2]);
 		glVertex3f(arrow[2][0],arrow[2][1],arrow[2][2]);
@@ -324,14 +317,7 @@ void arrowLocatorOverride::draw(
 		glVertex3f(arrow[3][0],arrow[3][1],arrow[3][2]);
 		glVertex3f(arrow[0][0],arrow[0][1],arrow[0][2]);
 		glEnd();
-
-	
-		glPopAttrib();
-
 		glPopMatrix();
-		glMatrixMode(GL_MODELVIEW);
-		glPopMatrix();
-
 	}
 }
 
