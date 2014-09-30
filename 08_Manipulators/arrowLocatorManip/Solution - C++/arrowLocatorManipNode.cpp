@@ -165,3 +165,17 @@ void arrowLocatorManip::draw(M3dView &view, const MDagPath &path, M3dView::Displ
 	MPxManipContainer::draw(view,path,style,status);
 
 }
+
+// Viewport 2.0 manipulator draw overrides
+void arrowLocatorManip::preDrawUI( const M3dView &view )
+{
+	//Add code to prepare specific drawing
+}
+
+void arrowLocatorManip::drawUI(
+	MHWRender::MUIDrawManager& drawManager,
+	const MHWRender::MFrameContext& frameContext ) const
+{
+	//Add your specific drawing here, for now, this is empty, as
+	//there is no specific drawing for this manipulator
+}

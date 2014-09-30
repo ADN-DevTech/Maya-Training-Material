@@ -29,7 +29,10 @@ public:
 
 //	MManipData		centerPointCallback(unsigned int manipIndex);	 //callback function to update manipulator position based on node position
 
-
+	// Viewport 2.0 manipulator draw overrides
+	virtual void		preDrawUI( const M3dView &view );
+	virtual void		drawUI( MHWRender::MUIDrawManager& drawManager,
+										const MHWRender::MFrameContext& frameContext) const;
 public:
 	static	MTypeId		id;
 	static  MDagPath	fDiscManip;     //This variable keeps a record of the base disc manip, which we add onto our manip container 
