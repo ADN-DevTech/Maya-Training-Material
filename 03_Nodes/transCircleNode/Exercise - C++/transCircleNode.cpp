@@ -60,9 +60,9 @@ MStatus transCircle::initialize()
 	//- Create compound input translate attributes by adding individual input translate attributes
 	MFnCompoundAttribute comAttr;
 	inputTranslate = comAttr.create("inputTranslate","it");
-	comAttr.addChild(transCircleNode.inputTranslateX);
-	comAttr.addChild(transCircleNode.inputTranslateY);
-	comAttr.addChild(transCircleNode.inputTranslateZ);
+	comAttr.addChild(inputTranslateX);
+	comAttr.addChild(inputTranslateY);
+	comAttr.addChild(inputTranslateZ);
 	comAttr.setStorable(true);
 
 	//- TODO: Create the outputTranslate compound attribute and its X, Y, Z

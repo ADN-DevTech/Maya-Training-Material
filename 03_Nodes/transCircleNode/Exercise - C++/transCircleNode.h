@@ -16,6 +16,7 @@
 #include <maya/MPlug.h>
 
 #include <maya/MFnNumericAttribute.h>
+#include <maya/MFnCompoundAttribute.h>
 #include <maya/MFnTypedAttribute.h>
 
 #include <maya/MDataBlock.h>
