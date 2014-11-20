@@ -1,7 +1,5 @@
 #ifndef _arrowLocatorNode
 #define _arrowLocatorNode
-#ifndef _arrowLocatorNode
-#define _arrowLocatorNode
 //
 // Copyright (C) 
 // 
@@ -50,8 +48,8 @@ public:
 class arrowLocator : public MPxLocatorNode
 {
 public:
-	arrowLocator() {}
-	virtual ~arrowLocator() {}
+	arrowLocator();
+	virtual ~arrowLocator();
 
 	MStatus compute( const MPlug& plug, MDataBlock& data );
 	virtual void draw(M3dView &view,const MDagPath & path,M3dView::DisplayStyle style, M3dView::DisplayStatus status);
@@ -63,14 +61,8 @@ public:
 
 	static MStatus		initialize();
 
-	static void* creator() {
-		return new arrowLocator();
-	}
+	static void* creator();
 
-#endif
-
-	
-public:
 	static	MTypeId		id;
 
 	static	MString		drawDbClassification;

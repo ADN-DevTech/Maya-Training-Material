@@ -65,10 +65,6 @@ public:
 		return new arrowLocator();
 	}
 
-#endif
-
-	
-public:
 	static	MTypeId		id;
 
 	static	MString		drawDbClassification;
@@ -78,3 +74,4 @@ public:
 
 };
 
+#endif

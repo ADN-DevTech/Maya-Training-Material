@@ -9,6 +9,7 @@
 //
 
 #include "arrowLocatorNode.h"
+#include "arrowLocatorManipNode.h"
 
 #include <maya/MPlug.h>
 #include <maya/MDataBlock.h>
@@ -20,6 +21,7 @@
 #include <maya/MAngle.h>
 #include <maya/MColor.h>
 #include <maya/MPxManipContainer.h>
+#include <maya/MFnPlugin.h>
 
 // You MUST change this to a unique value!!!  The id is a 32bit value used
 // to identify this type of node in the binary file format.  
@@ -40,9 +42,7 @@ static float arrow[][3] = { {2.00f, 0.0f, 0.0f} ,
 
 //indices into the arrow array
 static GLuint triangleIndices[] = {0,1,2,0,2,3};
-
-      
-
+     
 arrowLocator::arrowLocator() {}
 arrowLocator::~arrowLocator() {}
 
