@@ -33,8 +33,6 @@ This sample is licensed under the terms of the [MIT License](http://opensource.o
 
 ## Written by
 
-Autodesk Developer Network 
-
-March 2013
-
-http://www.autodesk.com/adn
+Autodesk Developer Network <br />
+March 2013 <br />
+http://www.autodesk.com/adn <br />
